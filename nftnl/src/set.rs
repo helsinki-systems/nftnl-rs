@@ -45,11 +45,6 @@ impl<'a, K> Set<'a, K> {
             sys::nftnl_set_set_str(set, sys::NFTNL_SET_NAME as u16, name.as_ptr());
             sys::nftnl_set_set_u32(set, sys::NFTNL_SET_ID as u16, id);
 
-            sys::nftnl_set_set_u32(
-                set,
-                sys::NFTNL_SET_FLAGS as u16,
-                (libc::NFT_SET_ANONYMOUS | libc::NFT_SET_CONSTANT) as u32,
-            );
             sys::nftnl_set_set_u32(set, sys::NFTNL_SET_KEY_TYPE as u16, K::TYPE);
             sys::nftnl_set_set_u32(set, sys::NFTNL_SET_KEY_LEN as u16, K::LEN);
 
